@@ -1,5 +1,7 @@
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageDraw
 import os
+import random
+
 
 def resizingImages():
   bdir = "building_images"
@@ -30,4 +32,22 @@ def addDiversity():
   for iname in images:
 
     image = Image.open(olddir+"/"+iname)
-    
+    draw = ImageDraw.Draw(image)
+
+    for i in range(1, 11):
+      im = image.copy()
+      draw.rectangle(((0,0),(400,200)), fill=(255, 255, 255))
+      draw.rectangle(((0,0),(200,400)), fill=(255, 255, 255))
+      draw.rectangle(((0,200),(400,400)), fill=(255, 255, 255))
+      draw.rectangle(((200,0),(400,400)), fill=(255, 255, 255))
+      draw.rectangle(((200,200),(300,300)), fill=(255, 255, 255))
+      draw.rectangle(((100,200),(200,300)), fill=(255, 255, 255))
+      draw.rectangle(((100,200),(200,300)), fill=(255, 255, 255))
+      draw.rectangle(((100,200),(300,300)), fill=(255, 255, 255))
+      draw.rectangle(((100,200),(300,350)), fill=(255, 255, 255))
+      draw.rectangle(((100,250),(300,300)), fill=(255, 255, 255))
+      resized_image  = image.resize((100,100), Image.ANTIALIAS)
+
+
+
+
