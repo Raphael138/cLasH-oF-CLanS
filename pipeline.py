@@ -32,11 +32,14 @@ def addDiversity():
   for iname in images:
 
     image = Image.open(olddir+"/"+iname)
-    draw = ImageDraw.Draw(image)
 
     for i in range(1, 11):
       im = image.copy()
+      draw = ImageDraw.Draw(im)
       draw.rectangle(((0,0),(400,200)), fill=(255, 255, 255))
+      resized_image  = im.resize((50*i,50*i), Image.ANTIALIAS)
+
+
       draw.rectangle(((0,0),(200,400)), fill=(255, 255, 255))
       draw.rectangle(((0,200),(400,400)), fill=(255, 255, 255))
       draw.rectangle(((200,0),(400,400)), fill=(255, 255, 255))
