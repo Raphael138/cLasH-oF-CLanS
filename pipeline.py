@@ -487,7 +487,6 @@ NAMES_FLIPPED = {
   'seeking air mine 3,4' : 477,
   'gold mine 13' : 478,
   'canon geared up burst 8' : 479,
-
 }
 
 
@@ -509,36 +508,6 @@ def creatingClasses():
     imname = images[i].split(".")[0]
     class_name = " ".join(imname.split("-"))
     print(f"  {i}: \'{class_name}\'")
-
-"""
-def addDiversity():
-  olddir = "dataset"
-  newdir = "data"
-  images = os.listdir(olddir)
-
-  for iname in images:
-
-    image = Image.open(olddir+"/"+iname)
-
-    for i in range(1, 11):
-      im = image.copy()
-      draw = ImageDraw.Draw(im)
-      draw.rectangle(((0,0),(400,200)), fill=(255, 255, 255))
-      resized_image  = im.resize((50*i,50*i), Image.ANTIALIAS)
-
-
-      draw.rectangle(((0,0),(200,400)), fill=(255, 255, 255))
-      draw.rectangle(((0,200),(400,400)), fill=(255, 255, 255))
-      draw.rectangle(((200,0),(400,400)), fill=(255, 255, 255))
-      draw.rectangle(((200,200),(300,300)), fill=(255, 255, 255))
-      draw.rectangle(((100,200),(200,300)), fill=(255, 255, 255))
-      draw.rectangle(((100,200),(200,300)), fill=(255, 255, 255))
-      draw.rectangle(((100,200),(300,300)), fill=(255, 255, 255))
-      draw.rectangle(((100,200),(300,350)), fill=(255, 255, 255))
-      draw.rectangle(((100,250),(300,300)), fill=(255, 255, 255))
-      resized_image  = image.resize((100,100), Image.ANTIALIAS)
-
-"""
 
 def addDiversity():
 
@@ -583,24 +552,8 @@ def addDiversity():
 
       #RESIZE AND REPAD
       #50, 100, 150, 200, 250, 300, 350, 400
-
-      match i%8:
-        case 0:
-          resized_image  = im.resize((50,50), Image.ANTIALIAS)
-        case 1:
-          resized_image  = im.resize((100,100), Image.ANTIALIAS)
-        case 2:
-          resized_image  = im.resize((150,150), Image.ANTIALIAS)
-        case 3:
-          resized_image  = im.resize((200,200), Image.ANTIALIAS)
-        case 4:
-          resized_image  = im.resize((250,250), Image.ANTIALIAS)
-        case 5:
-          resized_image  = im.resize((300,300), Image.ANTIALIAS)
-        case 6:
-          resized_image  = im.resize((350,350), Image.ANTIALIAS)
-        case 7:
-          resized_image  = im.resize((400,400), Image.ANTIALIAS)
+      dimdim = (i%8+1)*50
+      resized_image  = im.resize((dimdim,dimdim), Image.ANTIALIAS)
 
       #padding image
       padded_image = Image.new("RGB", (400, 400), (255, 255, 255))
